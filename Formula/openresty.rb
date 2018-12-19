@@ -10,10 +10,10 @@ class Openresty < Formula
   option "with-iconv", "Compile with ngx_http_iconv_module"
   option "with-slice", "Compile with ngx_http_slice_module"
 
+  depends_on "geoip"
+  depends_on "openresty/brew/openresty-openssl"
   depends_on "pcre"
   depends_on "postgresql" => :optional
-  depends_on "openresty/brew/openresty-openssl"
-  depends_on "geoip"
 
   skip_clean "site"
   skip_clean "pod"
@@ -79,27 +79,28 @@ class Openresty < Formula
 
   plist_options :manual => "openresty"
 
-  def plist; <<~EOS
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-      <dict>
-        <key>Label</key>
-        <string>#{plist_name}</string>
-        <key>RunAtLoad</key>
-        <true/>
-        <key>KeepAlive</key>
-        <false/>
-        <key>ProgramArguments</key>
-        <array>
-            <string>#{opt_prefix}/bin/openresty</string>
-            <string>-g</string>
-            <string>daemon off;</string>
-        </array>
-        <key>WorkingDirectory</key>
-        <string>#{HOMEBREW_PREFIX}</string>
-      </dict>
-    </plist>
+  def plist
+    <<~EOS
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+        <dict>
+          <key>Label</key>
+          <string>#{plist_name}</string>
+          <key>RunAtLoad</key>
+          <true/>
+          <key>KeepAlive</key>
+          <false/>
+          <key>ProgramArguments</key>
+          <array>
+              <string>#{opt_prefix}/bin/openresty</string>
+              <string>-g</string>
+              <string>daemon off;</string>
+          </array>
+          <key>WorkingDirectory</key>
+          <string>#{HOMEBREW_PREFIX}</string>
+        </dict>
+      </plist>
     EOS
   end
 

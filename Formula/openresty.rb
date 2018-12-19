@@ -93,9 +93,9 @@ class Openresty < Formula
           <false/>
           <key>ProgramArguments</key>
           <array>
-              <string>#{opt_prefix}/bin/openresty</string>
-              <string>-g</string>
-              <string>daemon off;</string>
+            <string>#{opt_prefix}/bin/openresty</string>
+            <string>-g</string>
+            <string>daemon off;</string>
           </array>
           <key>WorkingDirectory</key>
           <string>#{HOMEBREW_PREFIX}</string>

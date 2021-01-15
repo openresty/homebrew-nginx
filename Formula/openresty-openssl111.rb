@@ -2,7 +2,7 @@ class OpenrestyOpenssl111 < Formula
   desc "This OpenSSL 1.1.1 library build is specifically for OpenResty uses"
   homepage "https://www.openssl.org/"
   VERSION = "1.1.1i".freeze
-  revision 1
+  revision 2
 
   stable do
     url "https://www.openssl.org/source/openssl-#{VERSION}.tar.gz"
@@ -50,7 +50,7 @@ class OpenrestyOpenssl111 < Formula
       ENV["PERL"] = Formula["perl"].opt_bin/"perl"
     end
 
-    arch_args = %w[darwin64-x86_64-cc enable-ec_nistp_64_gcc_128]
+    arch_args = %W[darwin64-#{Hardware::CPU.arch}-cc enable-ec_nistp_64_gcc_128]
 
     #ENV.deparallelize
     system "perl", "./Configure", *(configure_args + arch_args)

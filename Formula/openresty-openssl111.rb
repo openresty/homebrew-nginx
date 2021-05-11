@@ -1,8 +1,8 @@
 class OpenrestyOpenssl111 < Formula
   desc "This OpenSSL 1.1.1 library build is specifically for OpenResty uses"
   homepage "https://www.openssl.org/"
-  VERSION = "1.1.1i".freeze
-  revision 2
+  VERSION = "1.1.1k".freeze
+  revision 1
 
   stable do
     url "https://www.openssl.org/source/openssl-#{VERSION}.tar.gz"
